@@ -21,7 +21,8 @@ This extension has only one main function named as run() other functions are tes
 # B_data is dataframe that gene names are rownames
 # list = B_Data_list is list format of B_Data
 # row_names = rownames(B_Data) 
-# groups = groups_2 is group information as NumericVector such as c( 1,1,1,1,2,2,2,2) that data has 2 group
+# groups = groups_2 is group information as
+          # NumericVector such as c( 1,1,1,1,2,2,2,2) that data has 2 group
 # edges_1 = as.character(Edges[["X.node1"]]) one of columns in edges dataframe this must be
           # CharecterVector Chracters must be names of genes and
           # they must be same with row_names parameter genes
