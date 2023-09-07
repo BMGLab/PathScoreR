@@ -12,6 +12,10 @@ Then import it:
 ```r
 library(Rcpp)
 ```
+Finally you can import bmg_lab.cpp:
+```r
+Rcpp::sourceCpp("path_to_file/bmg_lab.cpp")
+```
 This extension has only one main function named as run() other functions are test functions, to run run():
 ```r
 # B_data is dataframe that gene names are rownames
