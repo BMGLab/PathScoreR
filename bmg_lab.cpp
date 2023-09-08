@@ -35,7 +35,8 @@ DataFrame calculate_anova(vector<vector<vector<double>>>* group_items, // anova 
 DataFrame calculate_t_stat(vector<vector<vector<double>>>* group_items, // t_stat hesaplanacak // gene_count , group_count, one_group_len
                            int gene_count,int group_count, int one_group_len,int sample_count);
 vector<string> col_names(int gene_count);
-// [[Rcpp::export]]
+DoubleVector log_sum(const List& v);
+DoubleVector L_i(const List& v);
 DoubleVector log_sum(const List& v) {
     vector<double> vec;
     vec.assign( v.begin(),v.end());
@@ -55,7 +56,6 @@ double log_sum_back(const vector<double>* p_values) {
   }
   return raw_total;
 }
-// [[Rcpp::export]]
 DoubleVector L_i(const List& v){
   vector<double> vec;
   vec.assign(v.begin(),v.end());
@@ -759,19 +759,19 @@ col_names_groups <- function(group_count){
   }
   return(cols)
 }
-run <- function(list,groups,row_names,edges_1,edges_2,alpha,D){
-  tmp<-run_1(list,groups,row_names,edges_1,edges_2)
+run <- function(list,groups,row_names,nodes_1,nodes_2,alpha,D){
+  tmp<-run_1(list,groups,row_names,nodes_1,nodes_2)
   group_count<- max(groups)
   cols <- col_names_gene_count(length(row_names))
   colnames(tmp) <- cols
   if(group_count == 2){
     t_test <- calculate_p_values_t_stat(length(row_names),tmp)
-    final <- run_2(list,t_test,row_names,edges_1,edges_2,groups,alpha,D)
+    final <- run_2(list,t_test,row_names,nodes_1,nodes_2,groups,alpha,D)
     colnames(final)<- col_names_groups(2)
     return(final)
   }else{
     anova <- calculate_p_values_anova(length(row_names),tmp)
-    final <- run_2(list,anova,row_names,edges_1,edges_2,groups,alpha,D)
+    final <- run_2(list,anova,row_names,nodes_1,nodes_2,groups,alpha,D)
     colnames(final)<- col_names_groups(group_count)
     
     return(final)
