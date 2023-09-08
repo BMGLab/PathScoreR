@@ -23,15 +23,15 @@ This extension has only one main function named as run() other functions are tes
 # row_names = rownames(B_Data) 
 # groups = groups_2 is group information as
           # NumericVector such as c( 1,1,1,1,2,2,2,2) that data has 2 group
-# edges_1 = as.character(Edges[["X.node1"]]) one of columns in edges dataframe this must be
+# nodes_1 = as.character(Edges[["X.node1"]]) one of columns in edges dataframe this must be
           # CharecterVector Chracters must be names of genes and
           # they must be same with row_names parameter genes
-# edges_2 = as.character(Edges[["node2"]]) same of edges_1
+# nodes_2 = as.character(Edges[["node2"]]) same of edges_1
 # alpha threshold of p_value
 # D threshold for length between two nodes that are in network
 
 final<-run( list = B_Data_list, groups = groups_2, row_names = rownames(B_Data),
- edges_1 = as.character(Edges[["X.node1"]]), edges_2 = as.character(Edges[["node2"]]),
+ nodes_1 = as.character(Edges[["X.node1"]]), nodes_2 = as.character(Edges[["node2"]]),
  alpha = 0.05, D = 1000)
 
 ```
